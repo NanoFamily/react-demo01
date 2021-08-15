@@ -1,18 +1,25 @@
 import React from 'react';
 import { List } from './List';
 import { Form } from './Form';
+import { MENUS } from './const/menus';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: 'クリック前の表示',
       tab: 'list',
+      menus: MENUS,
     }
+  }
+  addMenu(menu) {
+    this.setState({
+      tab: 'list',
+      menus:[...this.state.menus, menu]
+    });
   }
 
   render() {
-    const { tab } = this.state;
+    const { tab, menus } = this.state;
     return (
       <div>
         <header>
@@ -27,7 +34,7 @@ class App extends React.Component {
         </header>
         <hr />
         {
-          tab === 'list' ? <List/> : <Form />
+          tab === 'list' ? <List menus={menus} /> : <Form onAddMenu={(menu) => this.addMenu(menu)} />
         }
       </div>
     )
