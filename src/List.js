@@ -1,9 +1,20 @@
-export const List = (props) => {
-  const title = props.title;
+const MENUS = [
+  'コーンスープ',
+  'シーザーサラダ',
+  'ガーリックトースト',
+  'ジェノベーゼ',
+  'カルボナーラ',
+  'ペペロンチーノ',
+  'リブステーキ'
+]
+export const List = () => {
   return (
     <div>
-      <h4>{title}</h4>
-      商品名
+      {
+        MENUS.map((menu, index) => {
+          return <div key={index}>{menu}</div>
+        })
+      }
     </div>
   )
 }
