@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import { List } from './List'
-import { Form } from './Form'
+import { List } from './List';
+import { Form } from './Form';
+import { MENUS } from './const/menus';
 
 function App() {
   const [tab, setTab] = useState('list');
+  const [menus, setMenus] = useState(MENUS);
+
+  const addMenu = (menu) => {
+    setMenus([...menus, menu]);
+    setTab('list');
+  }
 
   return (
     <div>
@@ -15,7 +22,7 @@ function App() {
       </header>
       <hr/>
       {
-        tab === 'list' ? <List/> : <Form/>
+        tab === 'list' ? <List menus={menus} /> : <Form onAddMenu={addMenu} />
       }
     </div>
   );

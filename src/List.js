@@ -1,17 +1,9 @@
-const MENUS = [
-  'コーンスープ',
-  'シーザーサラダ',
-  'ガーリックトースト',
-  'ジェノベーゼ',
-  'カルボナーラ',
-  'ペペロンチーノ',
-  'リブステーキ'
-]
-export const List = () => {
+
+export const List = ({ menus }) => {
   return (
     <div>
       {
-        MENUS.map((menu, index) => {
+        menus.map((menu, index) => {
           return <div key={index}>{menu}</div>
         })
       }
