@@ -1,25 +1,34 @@
 import React from 'react';
 import { List } from './List';
+import { Form } from './Form';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {description: 'クリック前の表示'}
+    this.state = {
+      description: 'クリック前の表示',
+      tab: 'list',
+    }
   }
-  changeDescription() {
-    this.setState({
-      description: 'クリック後の表示です。'
-    })
-  }
+
   render() {
-    const { description } = this.state;
+    const { tab } = this.state;
     return (
       <div>
-        { description }
-        <List title="メニュー" />
-        <button onClick={() => this.changeDescription()}>
-          ボタン
-        </button>
+        <header>
+          <ul>
+            <li onClick={() => this.setState({ tab: 'list' })}>
+              リスト
+            </li>
+            <li onClick={() => this.setState({ tab: 'form' })}>
+              フォーム
+            </li>
+          </ul>
+        </header>
+        <hr />
+        {
+          tab === 'list' ? <List/> : <Form />
+        }
       </div>
     )
   }

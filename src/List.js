@@ -1,12 +1,24 @@
 import React from 'react';
 
+const MENUS = [
+  'コーンスープ',
+  'シーザーサラダ',
+  'ガーリックトースト',
+  'ジェノベーゼ',
+  'カルボナーラ',
+  'ペペロンチーノ',
+  'リブステーキ'
+]
+
 export class List extends React.Component {
   render() {
-    const { title } = this.props;
     return (
       <div>
-        <h4>{title}</h4>
-        商品名
+        {
+          MENUS.map((menu, index) => {
+            return <div key={index}>{menu}</div>
+          })
+        }
       </div>
     )
   }
